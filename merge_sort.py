@@ -1,6 +1,10 @@
 #!usr/bin/python3
 
 def shrink_list(given_list):
+	"""This method shrinks the
+	   input list by two until
+	   the list has one or no
+	   elements."""
 
 	if len(given_list) == 0:
 		print("Length zero list.", given_list)
