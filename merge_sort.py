@@ -8,7 +8,7 @@ def shrink_list(given_list):
 
 	if len(given_list) == 0:
 		print("Length zero list.", given_list)
-		return given_list
+		return []
 	if len(given_list) == 1:
 		print("Length one list.", given_list)
 		return given_list
