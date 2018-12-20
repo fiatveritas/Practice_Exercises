@@ -1,6 +1,6 @@
 #!usr/bin/python3
 
-def shrink_list(given_list):
+def merge_sort(given_list):
 	"""This method runs merge
 	sorting calls on several
 	defined functions."""
@@ -12,8 +12,8 @@ def shrink_list(given_list):
 	if len(given_list) == 1: #base case for when list is one length, key point
 		return given_list
 	if len(given_list) > 0: #base case for divide and conquer
-		on_the_left = shrink_list(left_list(given_list))
-		on_the_right = shrink_list(right_list(given_list))
+		on_the_left = merge_sort(left_list(given_list))
+		on_the_right = merge_sort(right_list(given_list))
 		merged_array = ascending_order(on_the_left, on_the_right)
 	return merged_array
 
@@ -84,11 +84,11 @@ if __name__ == '__main__':
 	
 	numbers = random.sample(range(0, 100), 6)
 	print("Original Input:", dud_list)
-	print(shrink_list(dud_list)) #base case of zero elements
+	print(merge_sort(dud_list)) #base case of zero elements
 	print("Original Input:", zero_list)
-	print(shrink_list(zero_list))
+	print(merge_sort(zero_list))
 	print("Original Input:", numbers)
-	print(shrink_list(numbers))
+	print(merge_sort(numbers))
 	print("################")
 	print("################")
 	print("#END OF PROGRAM#")
