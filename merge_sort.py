@@ -6,18 +6,18 @@ def shrink_list(given_list):
 	   the list has one or no
 	   elements."""
 
+	merged_array = []
+
 	if len(given_list) == 0:
-		print("Length zero list.", given_list)
 		return []
 	if len(given_list) == 1:
-		print("Length one list.", given_list)
 		return given_list
 	if len(given_list) > 0:
-		print("Length:", len(given_list), "Reduced List:", given_list)
 		on_the_left = shrink_list(left_list(given_list))
-		print("Left:", on_the_left)
 		on_the_right = shrink_list(right_list(given_list))
-		print("Right:", on_the_right)
+		merged_array = ascending_order(on_the_left, on_the_right)
+	return merged_array
+
 
 def left_list(given_list):
 	if int(len(given_list) / 2) > 0:
@@ -33,59 +33,53 @@ def right_list(given_list):
 
 def ascending_order(left_array, right_array):
 	ordered_array = []
-	import random
 
-	random.seed(a = 2)
-
-	left_random = random.sample(range(0, 50), 10)
-	right_random = random.sample(range(0, 50), 10)
-	left_size = len(left_random)
-	right_size = len(right_random)
-	print("Left Size:", left_size, left_random)
-	print("Right Size:", right_size, right_random)
-	print("xxxxxxxxxxxxxxx")
+	if left_array:
+		left_size = len(left_array)
+	else:
+		left_size = 0
+	if right_array:
+		right_size = len(right_array)
+	else:
+		right_size = 0
 
 	i = 0
 	j = 0
-	while(i < left_size):
-		while(j < right_size):
-			print(i, left_random[i])
-			print (j, right_random[j])
-			if left_random[i] > right_random[j]:
-				print("right is smaller")
-				print("xxxxxxxxxxxxxxx")
-				ordered_array.append(right_random[j])
-				j += 1
-			elif left_random[i] < right_random[j]:
-				print("left is smaller")
-				print("xxxxxxxxxxxxxxx")
-				ordered_array.append(left_random[i])
-				i += 1
-			else:
-				print("same size")
-				print("xxxxxxxxxxxxxxx")
-				ordered_array.append(left_random[i])
-				ordered_array.append(right_random[j])
-				i += 1
-				j += 1
-		if i < left_size:
-			ordered_array.append(left_random[i])
-			print(i, left_random[i])
-			print("xxxxxxxxxxxxxxx")
+
+	while(i < left_size and j < right_size):
+		if left_array[i] > right_array[j]:
+			ordered_array.append(right_array[j])
+			j += 1
+		elif left_array[i] < right_array[j]:
+			ordered_array.append(left_array[i])
 			i += 1
+		else:
+			ordered_array.append(left_array[i])
+			ordered_array.append(right_array[j])
+			i += 1
+			j += 1
+	while i < left_size:
+		ordered_array.append(left_array[i])
+		i += 1
+	while j < right_size:
+		ordered_array.append(right_array[j])
+		j += 1
 	return ordered_array
 
 if __name__ == '__main__':
-	print(ascending_order([], []), len(ascending_order([], [])))
-	#dud_list = []
-	#zero_list = [0]
-	#numbers = [i for i in range(9, 0, -1)]
-	#print("Original Input:", numbers)
-	#shrink_list(dud_list) #base case of zero elements
-	#shrink_list(zero_list)
-	#shrink_list(numbers)
-	'''	print("################")
+	import random
+	random.seed(a = 0)
+	dud_list = []
+	zero_list = [0]
+	numbers = random.sample(range(0, 100), 6)
+	print("Original Input:", dud_list)
+	print(shrink_list(dud_list)) #base case of zero elements
+	print("Original Input:", zero_list)
+	print(shrink_list(zero_list))
+	print("Original Input:", numbers)
+	print(shrink_list(numbers))
+	print("################")
 	print("################")
 	print("#END OF PROGRAM#")
 	print("################")
-	print("################")'''
+	print("################")
