@@ -47,5 +47,5 @@ if __name__ == "__main__":
 	for i in range(10):
 		random.seed(a = i)
 		test_array = random.sample(range(0, 100), 10)
-		print("Random list.", test_array)
+		print("Random list:", test_array)
 		print("Sorted:", quicksort(test_array))
