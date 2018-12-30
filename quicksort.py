@@ -1,7 +1,9 @@
 #!/usr/bin/python3
-import random
+import random #for randomizing lists
 
 def quicksort(to_be_sorted):
+	"""this method sorts an array of unique positive numbers using
+	the quicksort algorithm using the last element as a pivot."""
 	if len(to_be_sorted) == 0:
 		return []
 	if len(to_be_sorted) == 1:
@@ -27,6 +29,7 @@ def quicksort(to_be_sorted):
 
 
 def swap(element_1, element_2):
+	"""this method swaps two elements passed into the function"""
 	holder = element_1
 	element_1 = element_2
 	element_2 = holder
@@ -43,5 +46,9 @@ if __name__ == "__main__":
 
 	print("Pass in an empty list.", quicksort(null_array))
 	print("Pass in a list with one element.", quicksort(array_len_one))
-	print("Pass in a random list.", test_array)
-	print("Sorted:", quicksort(test_array))
+
+	for i in range(10):
+		random.seed(a = i)
+		test_array = random.sample(range(0, 100), 10)
+		print("Pass in a random list.", test_array)
+		print("Sorted:", quicksort(test_array))
