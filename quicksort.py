@@ -38,9 +38,6 @@ def swap(element_1, element_2):
 
 if __name__ == "__main__":
 
-	random.seed(a = 0)
-	test_array = random.sample(range(0, 100), 10)
-
 	null_array = []
 	array_len_one = [0]
 
@@ -50,5 +47,5 @@ if __name__ == "__main__":
 	for i in range(10):
 		random.seed(a = i)
 		test_array = random.sample(range(0, 100), 10)
-		print("Pass in a random list.", test_array)
+		print("Random list.", test_array)
 		print("Sorted:", quicksort(test_array))
