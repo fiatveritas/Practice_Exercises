@@ -20,6 +20,17 @@ def sum_2(list_of_numbers, total):
 
 
 if __name__ == "__main__":
+	import urllib2
+	import quicksort as qs
+	f = open('2_Sum.txt', 'r')
+	lines = f.readlines()
+	lines = [int(line) for line in lines]
+	for i in range(20):
+		print(lines[i], type(lines[i])
+	lines = qs.quicksort(lines)
+	f.close()
+	print("Min:", min(lines))
+	print("Max:", max(lines))
 
 	null_array = []
 	array_len_one = [0]
@@ -41,14 +52,3 @@ if __name__ == "__main__":
 # Count number of 2 sum variations where x + y = t
 # t is any integer in interval [-10000, 10000]
 # Hash table utilization problem
-
-import urllib2
-
-
-f = open('2_Sum.txt', 'r')
-lines = f.readlines()
-f.close()
-lines = [int(line) for line in lines]
-
-for i in range(20):
-    print lines[i], type(lines[i])
