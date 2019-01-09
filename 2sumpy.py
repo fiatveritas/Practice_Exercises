@@ -18,20 +18,7 @@ def sum_2(list_of_numbers, total):
 	print("after populating:", look_up_table)
 	return counter
 
-
-if __name__ == "__main__":
-	import urllib2
-	import quicksort as qs
-	f = open('2_Sum.txt', 'r')
-	lines = f.readlines()
-	lines = [int(line) for line in lines]
-	for i in range(20):
-		print(lines[i], type(lines[i])
-	lines = qs.quicksort(lines)
-	f.close()
-	print("Min:", min(lines))
-	print("Max:", max(lines))
-
+def check_algorithm():
 	null_array = []
 	array_len_one = [0]
 	for i in range(10):
@@ -42,6 +29,19 @@ if __name__ == "__main__":
 		total = num_1 + num_2
 		print("Random list:", test_array)
 		print(sum_2(test_array, total), "pair(s) adding to", total)
+
+
+
+if __name__ == "__main__":
+	f = open('2_Sum.txt', 'r')
+	lines = f.readlines()
+	f.close()
+	lines = [int(line) for line in lines]
+	print("Min:", min(lines))
+	print("Max:", max(lines))
+	print("elements:", len(lines))
+
+	#check_algorithm()
 	print("================")
 
 	
