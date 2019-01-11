@@ -19,6 +19,8 @@ def sum_2(list_of_numbers, total):
 	return counter
 
 def check_algorithm():
+	"""this method generates a few randomized
+	   lists to test the 2sum algorithm."""
 	null_array = []
 	array_len_one = [0]
 	for i in range(10):
@@ -30,9 +32,7 @@ def check_algorithm():
 		print("Random list:", test_array)
 		print(sum_2(test_array, total), "pair(s) adding to", total)
 
-
-
-if __name__ == "__main__":
+def read_file():
 	f = open('2_Sum.txt', 'r')
 	lines = f.readlines()
 	f.close()
@@ -41,7 +41,9 @@ if __name__ == "__main__":
 	print("Max:", max(lines))
 	print("elements:", len(lines))
 
-	#check_algorithm()
+if __name__ == "__main__":
+	#read_file()
+	check_algorithm()
 	print("================")
 
 	
@@ -52,3 +54,22 @@ if __name__ == "__main__":
 # Count number of 2 sum variations where x + y = t
 # t is any integer in interval [-10000, 10000]
 # Hash table utilization problem
+
+"""
+The goal of this problem is to implement a variant of
+the 2-SUM algorithm covered in this week's lectures.
+
+The file contains 1 million integers, both positive
+and negative (there might be some repetitions!).This
+is your array of integers, with the ith row 
+of the file specifying the ith entry of the array.
+
+Your task is to compute the number of target values
+t in the interval [-10000,10000] (inclusive) such 
+that there are distinct numbers x,y in the input
+file that satisfy x+y=t. (NOTE: ensuring distinctness
+requires a one-line addition to the algorithm from lecture.)
+
+Write your numeric answer (an integer between 0 and 20001) 
+in the space provided.
+"""
