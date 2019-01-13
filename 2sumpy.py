@@ -11,10 +11,14 @@ def sum_2(list_of_numbers, total, look_up_table):
 		if total - i not in look_up_table:
 			look_up_table[i] = {i: False}
 		if total - i in look_up_table:
-			print (i, "+", total - i, "=", total)
-			look_up_table[total - i][total - i] = True
-			look_up_table[i] = {i: True}
-			counter += 1
+			if look_up_table[total - i][total - i] == True:
+				continue
+			elif look_up_table[total - i][total - i] == False:
+				print (i, "+", total - i, "=", total)
+				look_up_table[total - i][total - i] = True
+				look_up_table[i] = {i: True}
+				counter += 1
+
 	#print("after populating:", look_up_table)
 	return counter, look_up_table
 
@@ -48,9 +52,9 @@ def run_2sum(list_of_numbers):
 	look_up_table = {}
 	for t in range(-10, 11):
 		print("sum:", t)
-		print("pairs:", counter)
 		count, look_up_table = sum_2(list_of_numbers, t, look_up_table)
 		counter += count
+		print("pairs:", counter)
 	#print(look_up_table)
 	return counter
 
@@ -60,7 +64,8 @@ if __name__ == "__main__":
 	for i in range(10):
 		print("================")
 		random.seed(a = i)
-		test_array = random.sample(range(0, 100), 10)
+		test_array = random.sample(range(-10, 11), 10)
+		print(test_array)
 		print(run_2sum(test_array))
 	#check_algorithm()
 	print("================")
