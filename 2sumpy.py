@@ -35,15 +35,24 @@ def check_algorithm():
 def read_file():
 	f = open('2_Sum.txt', 'r')
 	lines = f.readlines()
+	if lines:
+		print("file read!")
+	else:
+		print("error: problem with file")
 	f.close()
-	lines = [int(line) for line in lines]
-	print("Min:", min(lines))
-	print("Max:", max(lines))
-	print("elements:", len(lines))
+	return [int(line) for line in lines]
+
+def run_2sum(list_of_numbers):
+	counter = 0
+	for t in xrange(-10000, 10001):
+		counter += sum_2(list_of_numbers)
+		print(counter)
+
 
 if __name__ == "__main__":
-	#read_file()
-	check_algorithm()
+	list_of_numbers = read_file()
+	#run_2sum(list_of_numbers)
+	#check_algorithm()
 	print("================")
 
 	
