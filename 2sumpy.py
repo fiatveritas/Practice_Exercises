@@ -1,22 +1,22 @@
 #!/usr/bin/python3
 import random #for randomizing lists
 
-def sum_2(list_of_numbers, total):
-	look_up_table = {}
+def sum_2(list_of_numbers, total, look_up_table):
 	counter = 0
-
-	print("Initializing empty hashtable:", look_up_table)
+	#print("Passed hashtable:", look_up_table)
 
 	for i in list_of_numbers:
 		if not look_up_table:
-			look_up_table[i] = i
+			look_up_table[i] = {i: False}
 		if total - i not in look_up_table:
-			look_up_table[i] = i
+			look_up_table[i] = {i: False}
 		if total - i in look_up_table:
 			print (i, "+", total - i, "=", total)
+			look_up_table[total - i][total - i] = True
+			look_up_table[i] = {i: True}
 			counter += 1
-	print("after populating:", look_up_table)
-	return counter
+	#print("after populating:", look_up_table)
+	return counter, look_up_table
 
 def check_algorithm():
 	"""this method generates a few randomized
@@ -26,11 +26,12 @@ def check_algorithm():
 	for i in range(10):
 		print("================")
 		random.seed(a = i)
+		look_up_table = {}
 		test_array = random.sample(range(0, 100), 10)
 		num_1, num_2 = random.sample(test_array, 2)
 		total = num_1 + num_2
 		print("Random list:", test_array)
-		print(sum_2(test_array, total), "pair(s) adding to", total)
+		print(sum_2(test_array, total, look_up_table)[0], "pair(s) adding to", total)
 
 def read_file():
 	f = open('2_Sum.txt', 'r')
@@ -44,14 +45,23 @@ def read_file():
 
 def run_2sum(list_of_numbers):
 	counter = 0
-	for t in xrange(-10000, 10001):
-		counter += sum_2(list_of_numbers)
-		print(counter)
+	look_up_table = {}
+	for t in range(-10, 11):
+		print("sum:", t)
+		print("pairs:", counter)
+		count, look_up_table = sum_2(list_of_numbers, t, look_up_table)
+		counter += count
+	#print(look_up_table)
+	return counter
 
 
 if __name__ == "__main__":
-	list_of_numbers = read_file()
-	#run_2sum(list_of_numbers)
+	#list_of_numbers = read_file()
+	for i in range(10):
+		print("================")
+		random.seed(a = i)
+		test_array = random.sample(range(0, 100), 10)
+		print(run_2sum(test_array))
 	#check_algorithm()
 	print("================")
 
